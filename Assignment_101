@@ -1,0 +1,44 @@
+CREATE TABLE Student
+(
+  Ssn INT NOT NULL,
+  Name INT NOT NULL,
+  Major INT NOT NULL,
+  Bdate INT NOT NULL,
+  PRIMARY KEY (Ssn)
+);
+
+CREATE TABLE Course
+(
+  Course INT NOT NULL,
+  Cname INT NOT NULL,
+  Dept INT NOT NULL,
+  PRIMARY KEY (Course)
+);
+
+CREATE TABLE Book
+(
+  Book_Title INT NOT NULL,
+  Publisher INT NOT NULL,
+  Author INT NOT NULL,
+  Book_ISBN INT NOT NULL,
+  PRIMARY KEY (Book_ISBN)
+);
+
+CREATE TABLE Enroll
+(
+  Quater INT NOT NULL,
+  Grade INT NOT NULL,
+  Ssn INT NOT NULL,
+  Course INT NOT NULL,
+  FOREIGN KEY (Ssn) REFERENCES Student(Ssn),
+  FOREIGN KEY (Course) REFERENCES Course(Course)
+);
+
+CREATE TABLE Book_Adoption
+(
+  Quater INT NOT NULL,
+  Course INT NOT NULL,
+  Book_ISBN INT NOT NULL,
+  FOREIGN KEY (Course) REFERENCES Course(Course),
+  FOREIGN KEY (Book_ISBN) REFERENCES Book(Book_ISBN)
+);
